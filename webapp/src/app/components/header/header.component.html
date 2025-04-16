@@ -1,0 +1,63 @@
+<header class="shadow">
+  <!-- Top bar with gradient -->
+  <div class="bg-gradient-to-r from-teal-800 to-cyan-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+      
+      <!-- Logo -->
+      <div class="text-3xl font-bold text-cyan-100 cursor-pointer" [routerLink]="'/'">ShopEase</div>
+
+      <!-- Search + Icons -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 w-full sm:w-auto justify-end">
+
+        <!-- Search bar -->
+        <div class="flex items-center bg-[#e5f1f3] rounded-full px-4 py-2 w-full sm:w-72">
+          <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input
+            type="text"
+            placeholder="Search products..."
+            (keyup.enter)="onSearch($event)"
+            class="bg-transparent focus:outline-none w-full text-black placeholder:text-gray-500"
+          />
+          <!-- [(ngModel)]="searchQuery"
+            " -->
+        </div>
+
+        <!-- Profile Icon -->
+        <a routerLink="/profile" class="text-white text-xl">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.7 0 4.5-1.8 4.5-4.5S14.7 3 12 3 7.5 4.8 7.5 7.5 9.3 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V21h18v-3c0-3-6-4.5-9-4.5z"/>
+          </svg>
+        </a>
+
+        <!-- Cart Icon -->
+        <div class="relative flex items-center">
+          <a routerLink="/cart" class="text-white text-xl">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+          </a>
+          <span class="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full px-1">0</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Category menu -->
+  <nav class="bg-[#141d26] text-white">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap justify-center gap-6 text-sm font-semibold">
+      @for (category of categoryList; track $index) {
+        <a class="hover:text-cyan-300" (click)="searchCategory(category._id!)">{{category.name}}</a>
+      }
+    </div>
+  </nav>
+</header>
+
+<a routerLink="/category/sports" class="hover:text-cyan-300">Sports</a>

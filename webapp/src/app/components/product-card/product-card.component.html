@@ -1,0 +1,25 @@
+<div [routerLink]="'product/'+product._id" class="w-full max-w-sm min-w-2xs  rounded-md shadow-sm p-4 bg-white text-center transform transition duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-green-400">
+    <!-- Product Image -->
+    <img
+        [src]="product.images[0]"
+        alt="Product Image"
+        class="mx-auto mb-4 h-48 object-contain transition duration-300 group-hover:scale-105"
+    />
+
+    <!-- Product Name -->
+    <h2 class="text-xl font-semibold mb-2">{{product.name}}</h2>
+
+    <!-- Description -->
+    <p class="text-sm text-gray-600 mb-4">
+        {{product.shortDescription}}
+        </p>
+
+    <!-- Price + Button -->
+    <div class="flex justify-between items-center px-4">
+        <span class="text-lg font-bold text-gray-800">₹{{product.price}}</span>
+        <button
+mat-flat-button color="primary"        >
+        Add to Cart
+        </button>
+    </div>
+    </div>

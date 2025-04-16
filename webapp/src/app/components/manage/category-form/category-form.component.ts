@@ -41,7 +41,7 @@ ngOnInit(){
     console.log(this.name)
     this.categoryService.updateCategory(this.id,this.name).subscribe((result:any)=>{
       alert("Category updated")
-      this.router.navigateByUrl("/admin/categories/")
+      this.router.navigateByUrl("/admin/categories")
     })
   }
 }

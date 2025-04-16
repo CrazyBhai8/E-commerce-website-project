@@ -54,7 +54,6 @@ export class CategoriesComponent {
     }
   }
   delete(id:string){
-    console.log(id)
     this.categoryService.deleteCategoryById(id).subscribe((result:any)=>{
       alert("Category deleted!")
       this.getServerData()

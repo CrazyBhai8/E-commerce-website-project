@@ -5,8 +5,25 @@ async function getBrands() {
     return brands.map(x=>x.toObject())
 }
 
-async function getBrands(id) {
+async function getBrand(id) {
     let brands = await Brand.findById(id)
     return brands.toObject()
 }
 
+async function addBrand(model) {
+    let brand = new Brand({
+        name:model.name
+    })
+    await brand.save()
+    return brand.toObject()
+}
+
+async function updateBrand(id,model) {
+    await Brand.findByIdAndUpdate(id, model)
+}
+
+async function deleteBrand(id) {
+    await Brand.findByIdAndDelete(id);
+}
+
+module.exports = {getBrands,getBrand, addBrand,updateBrand,deleteBrand}
