@@ -2,6 +2,9 @@ import { Component, inject } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../types/category';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { CustomerService } from '../../services/customer.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +13,12 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  categoryService = inject(CategoryService)
+  customerService = inject(CustomerService)
   categoryList:Category[]=[]
+  authService = inject(AuthService)
 
   ngOnInit(){
-    this.categoryService.getCategories().subscribe(result=>{
+    this.customerService.getCategories().subscribe(result=>{
       this.categoryList =result
     })
   }
@@ -27,5 +31,9 @@ export class HeaderComponent {
     }
     searchCategory(id:String){
       this.router.navigateByUrl('/products?search='+id)
+    }
+    logout(){
+      this.authService.logout()
+      this.router.navigateByUrl("/login")
     }
 }
